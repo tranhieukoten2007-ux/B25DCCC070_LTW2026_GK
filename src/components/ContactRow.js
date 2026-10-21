@@ -1,16 +1,23 @@
 import { Link } from "react-router-dom";
 
 const ContactRow = ({ contact, onDelete, onToggleFavorite }) => {
-  const { id, name, phone, group, favorite } = contact;
+  const { id, name, phone, email, group, favorite } = contact; // Bổ sung lấy email
   return (
     <tr>
-      <td><Link to={`/contacts/${id}`}>{name}</Link></td>
+      <td>
+        <Link to={`/contacts/${id}`} style={{ textDecoration: 'none', color: '#007bff', fontWeight: 'bold' }}>
+          {name} {favorite && <span style={{ color: 'red', marginLeft: '5px' }}>❤️</span>}
+        </Link>
+      </td>
       <td>{phone}</td>
+      <td>{email}</td> {/* In Email ra đây */}
       <td>{group}</td>
       <td>{favorite ? "Có" : "Không"}</td>
       <td>
-        <button onClick={() => onToggleFavorite(id)}>Đổi yêu thích</button>
-        <button onClick={() => onDelete(id)}>Xóa</button>
+        <button style={{ backgroundColor: '#ffc107', color: 'black' }} onClick={() => onToggleFavorite(id)}>
+          {favorite ? "Bỏ tim" : "Thả tim"}
+        </button>
+        <button style={{ backgroundColor: '#dc3545' }} onClick={() => onDelete(id)}>Xóa</button>
       </td>
     </tr>
   );
