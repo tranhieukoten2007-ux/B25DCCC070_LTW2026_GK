@@ -7,6 +7,7 @@ const ContactTable = ({ filteredContacts, onDelete, onToggleFavorite }) => {
         <tr>
           <th>Họ tên</th>
           <th>Số điện thoại</th>
+          <th>Email</th> {/* Đã thêm cột Email */}
           <th>Nhóm</th>
           <th>Yêu thích</th>
           <th>Hành động</th>
@@ -14,12 +15,7 @@ const ContactTable = ({ filteredContacts, onDelete, onToggleFavorite }) => {
       </thead>
       <tbody>
         {filteredContacts.map(c => (
-          <ContactRow 
-            key={c.id} 
-            contact={c} 
-            onDelete={onDelete} 
-            onToggleFavorite={onToggleFavorite} 
-          />
+          <ContactRow key={c.id} contact={c} onDelete={onDelete} onToggleFavorite={onToggleFavorite} />
         ))}
       </tbody>
     </table>
